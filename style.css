@@ -80,6 +80,13 @@ h1 {
   border-radius: 0.3125rem;
 }
 
+.text-inform {
+  color: #ff0000;
+  margin-top: 1rem;
+  text-align: center;
+  font-weight: 500;
+}
+
 .submit {
   border: 0;
   border-radius: 0.3125rem;
@@ -122,4 +129,24 @@ h1 {
   border-radius: 1rem;
   padding: 0.125rem 0.5rem;
   background-color: var(--sup-bg);
+}
+
+@media screen and (max-width: 900px){
+  .container-general-infos {
+    display: none;
+  }
+
+  .general-infos {
+    display: none;
+  }
+
+  #city {
+    width: 21rem;
+  }
+
+}
+@media screen and (max-width: 500px){
+  #city {
+    width: 10rem;
+  }
 }
