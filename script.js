@@ -71,7 +71,7 @@ async function SubmitWeatherForm() {
     wind.innerHTML = `<img src="./assets/wind.svg"/> <span>Vento ${weatherData.wind.speed * 3.6} km/h</span>`;
     sunrise.innerHTML = `<img src="./assets/sunrise.svg"/> <span>Nascer do Sol: ${timeStringSunrise}h</span>`;
     sunset.innerHTML = `<img src="./assets/sunset.svg"/> <span>Por do Sol: ${timeStringSunset}h</span>`;
-    feelsLike.innerHTML = `<img src="./assets/feels-like.svg"/> <span>Sensação térmica: ${weatherData.main.feels_like}°C</span>`
+    feelsLike.innerHTML = `<img src="./assets/feels-like.svg"/> <span>Sensação térmica: ${Math.round(weatherData.main.feels_like)}°C</span>`
 
     container.appendChild(cardContainer);
     container.appendChild(generalInfos);
