@@ -1,0 +1,125 @@
+/* ====== GENERAL ====== */
+:root {
+  --primary-bg: #0a1f44;
+  --sup-bg: #ff8c00;
+  --text: #53627c;
+  --input: #0267a3;
+  --submit: #0080cd;
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--primary-bg);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+h1 {
+  color: #fff;
+}
+
+/* ===== CONTAINERS ===== */
+
+.wrap, .form-container, .card-container, .container-general-infos{
+  padding: 1rem;
+}
+
+.container, .card-container, .general-infos, .general-infos > *{
+  display: flex;
+  flex-flow: column wrap;
+}
+
+.container, .general-infos > * {
+  align-items: center;
+}
+
+.main-container {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.main-container, .form-container {
+  margin-inline: auto;
+}
+
+.weather-infos, .general-infos {
+  height: 15.625rem;
+}
+
+.general-infos {
+  border-radius: 0.5rem;
+  gap: 1rem;
+}
+
+.general-infos > *{
+  flex-flow: row wrap;
+  gap: 0.5rem;
+}
+
+.weather-infos, .general-infos {
+  width: 30rem;
+  background-color: #fff;
+  padding: 2rem;
+}
+
+/* ===== BODY ELEMENTS ===== */
+
+#city, .submit, .city-name sup {
+  color: #fff;
+}
+
+#city {
+  width: 43.75rem;
+  height: 2.5rem;
+  padding: 1.25rem;
+  border: 0;
+  background-color: var(--input);
+  border-radius: 0.3125rem;
+}
+
+.submit {
+  border: 0;
+  border-radius: 0.3125rem;
+  height: 2.5rem;
+  width: 5rem;
+  background-color: var(--submit);
+}
+
+.weather-infos {
+  width: 15rem;
+  border-radius: 1rem;
+}
+
+.city-temp {
+  font-size: 3rem;
+  font-weight: 500;
+}
+
+.weather-description{
+  color: var(--text);
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.city {
+  color: var(--text);
+  font-size: 1.5rem;
+}
+
+.general-infos span {
+  font-weight: 600;
+}
+
+.temp sup {
+  font-size: 1.5rem;
+}
+
+.city-name sup {
+  font-size: 0.75rem;
+  border-radius: 1rem;
+  padding: 0.125rem 0.5rem;
+  background-color: var(--sup-bg);
+}
