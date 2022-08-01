@@ -24,11 +24,8 @@ async function SubmitWeatherForm() {
     const dateSunriseUTC = dateSunrise.toUTCString();
     const dateSunsetUTC = dateSunset.toUTCString();
 
-    console.log(dateSunriseUTC, dateSunsetUTC);
     const timeStringSunset = dateSunsetUTC[17] + dateSunsetUTC[18] + dateSunsetUTC[19] + dateSunsetUTC[20] + dateSunsetUTC[21];
     const timeStringSunrise = dateSunriseUTC[17] + dateSunriseUTC[18] + dateSunriseUTC[19] + dateSunriseUTC[20] + dateSunriseUTC[21];
-
-    console.log(dateSunrise , timeStringSunrise, timeStringSunset);
     
     const cardContainer = document.createElement('div');
     cardContainer.classList.add('card-container');
@@ -44,8 +41,12 @@ async function SubmitWeatherForm() {
     description.classList.add('wheater-description');
     const weatherInfos = document.createElement('div');
     weatherInfos.classList.add('weather-infos');
+    const containerGeneralInfos = document.createElement('div');
+    containerGeneralInfos.classList.add('container-general-infos');
     const generalInfos = document.createElement('div');
     generalInfos.classList.add('general-infos');
+    const containerBox = document.createElement('div');
+    containerBox.classList.add('main-container');
     const humidity = document.createElement('div');
     humidity.classList.add('humidity');
     const minMax = document.createElement('div');
@@ -61,20 +62,22 @@ async function SubmitWeatherForm() {
     const feelsLike = document.createElement('div');
     feelsLike.classList.add('temp-feelslike');
 
-    cityName.innerHTML = `${weatherData.name} <sup>${weatherData.sys.country}</sup>`;
-    cityTemp.innerHTML = `${Math.round(weatherData.main.temp)}<sup>°C</sup>`;
+    cityName.innerHTML = `<span class="city">${weatherData.name}</span> <sup>${weatherData.sys.country}</sup>`;
+    cityTemp.innerHTML = `<span class="city-temp">${Math.round(weatherData.main.temp)}<sup>°C</sup></span>`;
     tempIcon.setAttribute('src', `./assets/${weatherData.weather[0].icon}.svg`);
-    description.innerHTML = `<span>${weatherData.weather[0].description}</span>`;
-    humidity.innerHTML = `<img src="./assets/humidity.svg"/> <span>Umidade ${weatherData.main.humidity}%</span>`;
-    minMax.innerHTML = `<img src="./assets/minmax.svg"/> <span>Max./Mín. ${Math.round(weatherData.main.temp_max)}°/${Math.round(weatherData.main.temp_min)}°</span>`;
-    pressure.innerHTML = `<img src="./assets/pressure.svg"/> <span>Pressão ${weatherData.main.pressure} Pa</span>`;
-    wind.innerHTML = `<img src="./assets/wind.svg"/> <span>Vento ${weatherData.wind.speed * 3.6} km/h</span>`;
+    description.innerHTML = `<span class="weather-description">${weatherData.weather[0].description}</span>`;
+    humidity.innerHTML = `<img src="./assets/humidity.svg"/> <span>Umidade: ${weatherData.main.humidity}%</span>`;
+    minMax.innerHTML = `<img src="./assets/minmax.svg"/> <span>Max./Mín.: ${Math.round(weatherData.main.temp_max)}°/${Math.round(weatherData.main.temp_min)}°</span>`;
+    pressure.innerHTML = `<img src="./assets/pressure.svg"/> <span>Pressão: ${weatherData.main.pressure} Pa</span>`;
+    wind.innerHTML = `<img src="./assets/wind.svg"/> <span>Vento: ${(weatherData.wind.speed * 3.6).toFixed(2)} km/h</span>`;
     sunrise.innerHTML = `<img src="./assets/sunrise.svg"/> <span>Nascer do Sol: ${timeStringSunrise}h</span>`;
-    sunset.innerHTML = `<img src="./assets/sunset.svg"/> <span>Por do Sol: ${timeStringSunset}h</span>`;
+    sunset.innerHTML = `<img src="./assets/sunset.svg"/> <span>Pôr do Sol: ${timeStringSunset}h</span>`;
     feelsLike.innerHTML = `<img src="./assets/feels-like.svg"/> <span>Sensação térmica: ${Math.round(weatherData.main.feels_like)}°C</span>`
 
-    container.appendChild(cardContainer);
-    container.appendChild(generalInfos);
+    container.appendChild(containerBox);
+    containerBox.appendChild(cardContainer);
+    containerBox.appendChild(containerGeneralInfos);
+    containerGeneralInfos.appendChild(generalInfos);
     cardContainer.appendChild(weatherInfos);
     weatherInfos.appendChild(cityName);
     weatherInfos.appendChild(cityTemp);
@@ -88,8 +91,7 @@ async function SubmitWeatherForm() {
     generalInfos.appendChild(pressure);
     generalInfos.appendChild(wind);
 
-    console.log(weatherData)
   } catch (error) {
-    console.log(error);
+    throw(error);
   }
 }
