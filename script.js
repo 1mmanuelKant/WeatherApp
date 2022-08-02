@@ -68,6 +68,34 @@ async function SubmitWeatherForm() {
       sunset.classList.add('city-sunset');
       const feelsLike = document.createElement('div');
       feelsLike.classList.add('temp-feelslike');
+
+      if(weatherData.weather[0].description === 'broken clouds' || weatherData.weather[0].description === 'scattered clouds') {
+        weatherData.weather[0].description = 'Nuvens Dispersas';
+      } else if(weatherData.weather[0].description === 'few clouds') {
+        weatherData.weather[0].description = 'Poucas Nuvens';
+      } else if(weatherData.weather[0].description === 'clear sky' ||weatherData.weather[0].description === 'clear') {
+        weatherData.weather[0].description = 'Céu Limpo';
+      } else if(weatherData.weather[0].description === 'shower rain') {
+        weatherData.weather[0].description = 'Chuva';
+      } else if(weatherData.weather[0].description === 'thunderstorm') {
+        weatherData.weather[0].description = 'Trovoada';
+      } else if(weatherData.weather[0].description === 'snow') {
+        weatherData.weather[0].description = 'Neve';
+      } else if(weatherData.weather[0].description === 'mist' || weatherData.weather[0].description === 'haze' ||weatherData.weather[0].description === 'fog' ||weatherData.weather[0].description === 'smoke') {
+        weatherData.weather[0].description = 'Névoa';
+      } else if(weatherData.weather[0].description === 'overcast clouds') {
+        weatherData.weather[0].description = 'Nublado';
+      } else if(weatherData.weather[0].description === 'drizzle') {
+        weatherData.weather[0].description = 'Chuvisco';
+      } else if(weatherData.weather[0].description === 'clouds') {
+        weatherData.weather[0].description = 'Nuvens';
+      } else if(weatherData.weather[0].description === 'ash') {
+        weatherData.weather[0].description = 'Cinzas';
+      } else if(weatherData.weather[0].description === 'squall') {
+        weatherData.weather[0].description = 'Tempestade';
+      } else if(weatherData.weather[0].description === 'dust') {
+        weatherData.weather[0].description = 'Tempestade de poeira';
+      }
       
       cityName.innerHTML = `<span class="city">${weatherData.name}</span> <sup>${weatherData.sys.country}</sup>`;
       cityTemp.innerHTML = `<span class="city-temp">${Math.round(weatherData.main.temp)}<sup>°C</sup></span>`;
@@ -98,7 +126,6 @@ async function SubmitWeatherForm() {
       generalInfos.appendChild(pressure);
       generalInfos.appendChild(wind);
     }
-    
     cities.push(weatherData.name);
   } catch (error) {
     cityAlreadySearched.innerHTML = `<span>A Cidade já foi pesquisada ou não existe</span>`;
